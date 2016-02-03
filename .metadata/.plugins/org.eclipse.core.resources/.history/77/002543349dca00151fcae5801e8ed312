@@ -6,7 +6,7 @@ public class PreferenceTable {
 
 	}
 	
-	private void readFileName (String fileName){
+	private void takeFileName (String fileName){
 		
 	}
 
