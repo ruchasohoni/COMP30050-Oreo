@@ -85,13 +85,19 @@ public class CandidateSolution {
 	
 	public boolean tweak(){
 		int oldEnergy = getEnergy();
+//		System.out.println("Old energy... " + oldEnergy);
 		CandidateAssignment randomAssignment = getRandomAssignment();
+//		System.out.println("Randomizing " + randomAssignment.getAssignment());
 		randomAssignment.randomizeAssignment();
+//		System.out.println("Randomized " + randomAssignment.getAssignment());
 		int newEnergy = getEnergy();
+//		System.out.println("New energy... " + newEnergy);
 		totalChange += Math.abs(oldEnergy - newEnergy);
 		tweakCount++;
 		 if (oldEnergy < newEnergy){
+//			System.out.println("Undoing...");
 			randomAssignment.undoChange();
+//			System.out.println("Energy (should be same as old " + getEnergy());
 			return false;
 		 } 
 		 else return true;

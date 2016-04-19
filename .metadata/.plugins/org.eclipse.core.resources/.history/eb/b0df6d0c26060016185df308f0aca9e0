@@ -46,10 +46,6 @@ public class CandidateSolution {
 		return null;
 	}
 	
-	public int getAverageEnergyChange(){
-		return totalChange/tweakCount;
-	}
-	
 	/**
 	 * Calculates the energy (how undesirable) a solution is. Firstly, it sums the individual energy of all the assignments
 	 * making up the solution. It also sees how many repeat assignments there are (candidates with the same assignment
@@ -85,13 +81,19 @@ public class CandidateSolution {
 	
 	public boolean tweak(){
 		int oldEnergy = getEnergy();
+		System.out.println("Old energy... " + oldEnergy);
 		CandidateAssignment randomAssignment = getRandomAssignment();
+		System.out.println("Randomizing " + randomAssignment.getAssignment());
 		randomAssignment.randomizeAssignment();
+		System.out.println("Randomized " + randomAssignment.getAssignment());
 		int newEnergy = getEnergy();
+		System.out.println("New energy... " + newEnergy);
 		totalChange += Math.abs(oldEnergy - newEnergy);
 		tweakCount++;
 		 if (oldEnergy < newEnergy){
+			 System.out.println("Undoing...");
 			randomAssignment.undoChange();
+			System.out.println("Energy (should be same as old " + getEnergy());
 			return false;
 		 } 
 		 else return true;

@@ -1,0 +1,12 @@
+
+public class Test {
+
+	public static void main(String[] args) {
+		PreferenceTable p = new PreferenceTable("Project allocation data.tsv");
+		CandidateSolution s = new CandidateSolution(p);
+		SASolver sa = new SASolver(s);
+		System.out.println("Current energy... " + s.getEnergy());
+		
+	}
+
+}
