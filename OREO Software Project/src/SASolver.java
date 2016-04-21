@@ -18,7 +18,7 @@ public class SASolver {
 			else {
 				heat = heat - 1;
 			}
-			System.out.println(heat);
+			//System.out.println(heat);
 		}
 		System.out.println(count);
 	}

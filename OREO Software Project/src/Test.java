@@ -5,7 +5,7 @@ public class Test {
 		PreferenceTable p = new PreferenceTable("Project allocation data.tsv");
 		CandidateSolution s = new CandidateSolution(p);
 		System.out.println("Current energy... " + s.getEnergy());
-		SASolver solver = new SASolver(s, 25);
+		SASolver solver = new SASolver(s, 30);
 		System.out.println("New energy... " + s.getEnergy());
 	}
 }
