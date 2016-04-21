@@ -1,13 +1,13 @@
 import java.util.*;
 
 public class CandidateSolution {
-	
+
 	private PreferenceTable pref;
 	private List<CandidateAssignment> assignments;
 	private Random RND = new Random();
 	private static final int PENALTY = 1000;
 	public int tweakCount, totalChange;
-	
+
 	/**
 	 * This class stores a collection of individual assignments. Solutions can be compared by how desirable they are.
 	 * In the ideal solution, every student will be assigned their number one preference and there will be no duplicates.
@@ -19,7 +19,7 @@ public class CandidateSolution {
 		assignments = new ArrayList<CandidateAssignment>();
 		fillAssignments();
 	}
-	
+
 	/**
 	 * Goes through the list of all student entries, and creates a CandidateAssignment object for each student. As each
 	 * candidate's assignment is chosen randomly from their list of preferences when the object is created, each solution
@@ -45,11 +45,11 @@ public class CandidateSolution {
 		}
 		return null;
 	}
-	
+
 	public int getAverageEnergyChange(){
 		return totalChange/tweakCount;
 	}
-	
+
 	/**
 	 * Calculates the energy (how undesirable) a solution is. Firstly, it sums the individual energy of all the assignments
 	 * making up the solution. It also sees how many repeat assignments there are (candidates with the same assignment
@@ -69,7 +69,7 @@ public class CandidateSolution {
 		}
 		return total;
 	}
-	
+
 	/**
 	 * The fitness is the inverse of the energy of a solution. Where energy represents how undesirable a solution is,
 	 * the fitness represents how desirable and 'good' the solution is. The lower the energy, the higher the fitness,
@@ -78,22 +78,35 @@ public class CandidateSolution {
 	public int getFitness(){
 		return getEnergy() * -1;
 	}
-	
+
 	public CandidateAssignment getRandomAssignment(){
 		return assignments.get(RND.nextInt(assignments.size()));
 	}
-	
-	public boolean tweak(){
+
+	public boolean tweak(double T){
 		int oldEnergy = getEnergy();
 		CandidateAssignment randomAssignment = getRandomAssignment();
 		randomAssignment.randomizeAssignment();
 		int newEnergy = getEnergy();
 		totalChange += Math.abs(oldEnergy - newEnergy);
 		tweakCount++;
-		 if (oldEnergy < newEnergy){
-			randomAssignment.undoChange();
-			return false;
-		 } 
-		 else return true;
-	}	 
+		if (oldEnergy < newEnergy){
+			if(boltzmann(Math.abs((oldEnergy - newEnergy)), T)){
+				randomAssignment.undoChange();
+				return false;
+			}
+		} 
+		return true;
+	}
+
+	private boolean boltzmann(double difference, double T) {
+		double rand = Math.random();
+//		System.out.println(1/Math.pow(Math.E, difference/T) + "\t" + rand);
+		if(rand < 1/Math.pow(Math.E, difference/T)){
+			System.out.println("true");
+			return true;
+		}
+		System.out.println("false");
+		return false;
+	}
 }

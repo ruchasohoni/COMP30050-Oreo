@@ -1,24 +1,21 @@
 
 public class SASolver {
-	private int heat;
+	private int temp;
 	private CandidateSolution sol;
 	int count;
 	
 	public SASolver(CandidateSolution s, int h){
 		count = 0;
-		this.heat = h;
+		this.temp = h;
 		this.sol = s;
-//		System.out.println("Initial energy: " +s.getEnergy());
-		while (heat!= 0){
+		while (temp!= 0){
 			count++;
-//			System.out.println(s.getEnergy());
-			if (sol.tweak()){
-				heat = h;
+			if (sol.tweak((double)temp)){
+				temp = h;
 			}
 			else {
-				heat = heat - 1;
+				temp = temp - 1;
 			}
-			//System.out.println(heat);
 		}
 		System.out.println(count);
 	}
