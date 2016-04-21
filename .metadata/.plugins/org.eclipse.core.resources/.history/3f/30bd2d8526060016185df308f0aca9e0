@@ -1,9 +1,0 @@
-
-public class SASolver {
-	public static void main(String[] args){
-		PreferenceTable p = new PreferenceTable("Project allocation data.tsv");
-		CandidateSolution s = new CandidateSolution(p);
-		int heat = 1000;
-		System.out.println(s.getEnergy());
-	}
-}
