@@ -1,20 +1,20 @@
 
 public class HCSolver {
-	private int heat;
 	private CandidateSolution sol;
-	int count;
+	private static final int TEMPERATURE = 25;
+	int count, index;
 	
-	public HCSolver(CandidateSolution s, int h){
-		count = 0;
-		this.heat = h;
+	public HCSolver(CandidateSolution s){
+		count  = 0;
+		index = TEMPERATURE;
 		this.sol = s;
-		while (heat!= 0){
+		while (index!= 0){
 			count++;
-			if (sol.tweak(h)){
-				heat = h;
+			if (sol.tweakHC()){
+				index = TEMPERATURE;
 			}
 			else {
-				heat = heat - 1;
+				index--;
 			}
 		}
 		System.out.println(count);

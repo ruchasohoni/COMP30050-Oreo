@@ -46,9 +46,6 @@ public class CandidateSolution {
 		return null;
 	}
 
-	public int getAverageEnergyChange(){
-		return totalChange/tweakCount;
-	}
 
 	/**
 	 * Calculates the energy (how undesirable) a solution is. Firstly, it sums the individual energy of all the assignments
@@ -83,12 +80,24 @@ public class CandidateSolution {
 		return assignments.get(RND.nextInt(assignments.size()));
 	}
 
-	public boolean tweak(double T){
+	public boolean tweakHC(){
 		int oldEnergy = getEnergy();
 		CandidateAssignment randomAssignment = getRandomAssignment();
 		randomAssignment.randomizeAssignment();
 		int newEnergy = getEnergy();
-		totalChange += Math.abs(oldEnergy - newEnergy);
+		tweakCount++;
+		 if (oldEnergy < newEnergy){
+			randomAssignment.undoChange();
+			return false;
+		 } 
+		 else return true;
+	}	 
+	
+	public boolean tweakSA(double T){
+		int oldEnergy = getEnergy();
+		CandidateAssignment randomAssignment = getRandomAssignment();
+		randomAssignment.randomizeAssignment();
+		int newEnergy = getEnergy();
 		tweakCount++;
 		if (oldEnergy < newEnergy){
 			if(boltzmann(Math.abs((oldEnergy - newEnergy)), T)){
@@ -98,6 +107,7 @@ public class CandidateSolution {
 		} 
 		return true;
 	}
+
 
 	private boolean boltzmann(double difference, double T) {
 		double rand = Math.random();
