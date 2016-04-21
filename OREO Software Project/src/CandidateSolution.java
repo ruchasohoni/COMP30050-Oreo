@@ -6,7 +6,6 @@ public class CandidateSolution {
 	private List<CandidateAssignment> assignments;
 	private Random RND = new Random();
 	private static final int PENALTY = 1000;
-	public int tweakCount, totalChange;
 
 	/**
 	 * This class stores a collection of individual assignments. Solutions can be compared by how desirable they are.
@@ -15,7 +14,6 @@ public class CandidateSolution {
 	 */
 	public CandidateSolution(PreferenceTable pref){
 		this.pref = pref;
-		tweakCount = totalChange = 0;
 		assignments = new ArrayList<CandidateAssignment>();
 		fillAssignments();
 	}
@@ -85,7 +83,6 @@ public class CandidateSolution {
 		CandidateAssignment randomAssignment = getRandomAssignment();
 		randomAssignment.randomizeAssignment();
 		int newEnergy = getEnergy();
-		tweakCount++;
 		 if (oldEnergy < newEnergy){
 			randomAssignment.undoChange();
 			return false;
@@ -93,19 +90,16 @@ public class CandidateSolution {
 		 else return true;
 	}	 
 	
-	public boolean tweakSA(double T){
+	public void tweakSA(double T){
 		int oldEnergy = getEnergy();
 		CandidateAssignment randomAssignment = getRandomAssignment();
 		randomAssignment.randomizeAssignment();
 		int newEnergy = getEnergy();
-		tweakCount++;
 		if (oldEnergy < newEnergy){
-			if(boltzmann(Math.abs((oldEnergy - newEnergy)), T)){
+			if(!boltzmann((newEnergy - oldEnergy), T)){
 				randomAssignment.undoChange();
-				return false;
 			}
-		} 
-		return true;
+		}
 	}
 
 
@@ -113,10 +107,8 @@ public class CandidateSolution {
 		double rand = Math.random();
 //		System.out.println(1/Math.pow(Math.E, difference/T) + "\t" + rand);
 		if(rand < 1/Math.pow(Math.E, difference/T)){
-			System.out.println("true");
 			return true;
 		}
-		System.out.println("false");
 		return false;
 	}
 }

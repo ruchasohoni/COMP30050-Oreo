@@ -1,21 +1,18 @@
 
 public class SASolver {
-	private int temp;
+	private static int temperature;
 	private CandidateSolution sol;
 	int count;
 	
-	public SASolver(CandidateSolution s, int h){
+	public SASolver(CandidateSolution s, int t){
+		temperature = t;
 		count = 0;
-		this.temp = h;
 		this.sol = s;
-		while (temp!= 0){
+		while (temperature > 50){
 			count++;
-			if (sol.tweak((double)temp)){
-				temp = h;
-			}
-			else {
-				temp = temp - 1;
-			}
+			sol.tweakSA((double) temperature);
+		//	System.out.println(temperature);
+			temperature*=.98;
 		}
 		System.out.println(count);
 	}
