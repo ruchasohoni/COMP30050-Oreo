@@ -1,11 +1,15 @@
 import java.awt.EventQueue;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JTextArea;
 
 public class mainWindow {
@@ -50,6 +54,7 @@ public class mainWindow {
 		frmOreoSoftwareProject.setBounds(100, 100, 450, 300);
 		frmOreoSoftwareProject.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmOreoSoftwareProject.getContentPane().setLayout(null);
+		frmOreoSoftwareProject.setIconImage(new ImageIcon("icon.png").getImage());
 
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.addItem("Simulated Annealing");
