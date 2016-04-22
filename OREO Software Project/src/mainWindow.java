@@ -53,13 +53,18 @@ public class mainWindow {
 		frmOreoSoftwareProject = new JFrame();
 		frmOreoSoftwareProject.setResizable(false);
 		frmOreoSoftwareProject.setTitle("OREO Software Project");
-		frmOreoSoftwareProject.setBounds(100, 100, 450, 300);
+		frmOreoSoftwareProject.setBounds(100, 100, 543, 442);
 		frmOreoSoftwareProject.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmOreoSoftwareProject.getContentPane().setLayout(null);
 		frmOreoSoftwareProject.setIconImage(new ImageIcon("icon.png").getImage());
-		textPane.setFont(new Font("Papyrus", Font.PLAIN, 13));
+		textPane.setLineWrap(true);
 
+		textPane.setFont(new Font("Papyrus", Font.PLAIN, 13));
 		textPane.setEditable(false);
+		
+		JScrollPane scrollPane = new JScrollPane(textPane);
+		scrollPane.setBounds(186, 11, 341, 391);
+		frmOreoSoftwareProject.getContentPane().add(scrollPane);
 
 		JTextField temperatureField = new JTextField();
 		temperatureField.setHorizontalAlignment(SwingConstants.CENTER);
@@ -72,8 +77,22 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		temperatureField.setBounds(33, 85, 120, 20);
+		temperatureField.setBounds(33, 113, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(temperatureField);
+
+		JTextField coolingField = new JTextField();
+		coolingField.setToolTipText("The cooling facter per solution");
+		coolingField.setHorizontalAlignment(SwingConstants.CENTER);
+		coolingField.addFocusListener(new FocusListener() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				coolingField.setText("");
+			}
+			@Override
+			public void focusLost(FocusEvent e) { }
+		});
+		coolingField.setBounds(33, 175, 120, 20);
+		frmOreoSoftwareProject.getContentPane().add(coolingField);
 
 		JTextField populationField = new JTextField();
 		populationField.setHorizontalAlignment(SwingConstants.CENTER);
@@ -86,7 +105,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		populationField.setBounds(33, 133, 120, 20);
+		populationField.setBounds(33, 237, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(populationField);
 
 		JTextField percentageField = new JTextField();
@@ -100,59 +119,69 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		percentageField.setBounds(33, 181, 120, 20);
+		percentageField.setBounds(33, 299, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(percentageField);
-		
+
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
 		comboBox.addItem("Simulated Annealing");
 		comboBox.addItem("Genetic Algorithm");
 		comboBox.setMaximumRowCount(2);
 		comboBox.addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
-		        if(comboBox.getSelectedItem() == "Simulated Annealing"){
-		        	temperatureField.setText("300");
-		        	populationField.setText("");
-		        	percentageField.setText("");
-		        	temperatureField.setEditable(true);
-		        	populationField.setEditable(false);
-		        	percentageField.setEditable(false);
-		        } else {
-		        	temperatureField.setText("");
-		        	populationField.setText("1000");
-		        	percentageField.setText("10");
-		        	temperatureField.setEditable(false);
-		        	populationField.setEditable(true);
-		        	percentageField.setEditable(true);
-		        }
-		    }
+			public void actionPerformed(ActionEvent e) {
+				if(comboBox.getSelectedItem() == "Simulated Annealing"){
+					temperatureField.setText("300");
+					coolingField.setText("0.999");
+					populationField.setText("");
+					percentageField.setText("");
+					temperatureField.setEditable(true);
+					coolingField.setEditable(true);
+					populationField.setEditable(false);
+					percentageField.setEditable(false);
+				} else {
+					temperatureField.setText("");
+					coolingField.setText("");
+					populationField.setText("1000");
+					percentageField.setText("10");
+					temperatureField.setEditable(false);
+					coolingField.setEditable(false);
+					populationField.setEditable(true);
+					percentageField.setEditable(true);
+				}
+			}
 		});
-		comboBox.setBounds(18, 32, 150, 25);
+		comboBox.setBounds(18, 46, 150, 25);
 		comboBox.setSelectedItem("Simulated Annealing");
 		frmOreoSoftwareProject.getContentPane().add(comboBox);
 
 		JLabel lblSelectTheType = new JLabel("Select the algorithm to use");
 		lblSelectTheType.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectTheType.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
-		lblSelectTheType.setBounds(10, 7, 166, 18);
+		lblSelectTheType.setBounds(10, 14, 166, 18);
 		frmOreoSoftwareProject.getContentPane().add(lblSelectTheType);
 
 		JLabel lblTemperaturega = new JLabel("Temperature");
 		lblTemperaturega.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTemperaturega.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblTemperaturega.setBounds(10, 64, 166, 14);
+		lblTemperaturega.setBounds(10, 85, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblTemperaturega);
+
+		JLabel lblDecrimentFactor = new JLabel("Cooling factor");
+		lblDecrimentFactor.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDecrimentFactor.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
+		lblDecrimentFactor.setBounds(10, 147, 166, 14);
+		frmOreoSoftwareProject.getContentPane().add(lblDecrimentFactor);
 
 		JLabel lblPopulationSizega = new JLabel("Population Size");
 		lblPopulationSizega.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPopulationSizega.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblPopulationSizega.setBounds(10, 112, 166, 14);
+		lblPopulationSizega.setBounds(10, 209, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblPopulationSizega);
 
 		JLabel lblTopPercentga = new JLabel("Top Percent");
 		lblTopPercentga.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTopPercentga.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblTopPercentga.setBounds(10, 160, 166, 14);
+		lblTopPercentga.setBounds(10, 271, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblTopPercentga);
 
 		JButton btnGo = new JButton("GO!");
@@ -161,25 +190,31 @@ public class mainWindow {
 			public void actionPerformed(ActionEvent arg0) {
 				if (comboBox.getSelectedItem() == "Simulated Annealing"){ // SA
 					try {
+						if(Double.parseDouble(coolingField.getText()) >= 1
+								|| Double.parseDouble(coolingField.getText()) < 0){
+							print("Cooling factor must be between 0 and 1!");
+							throw new Exception();
+						}
 						int startEn = temp.getEnergy();
 						long startTime = System.currentTimeMillis();
 						SASolver sa = new SASolver();
-						sa.solve(temp, Double.parseDouble(temperatureField.getText()));
+						sa.solve(temp, Double.parseDouble(temperatureField.getText()),Double.parseDouble(coolingField.getText()));
 						long endTime = System.currentTimeMillis();
 						print(("Start energy... " + startEn));
 						print(("New energy... " + temp.getEnergy()));
 						float diff = (float)(endTime-startTime)/1000;
 						print("Time = "+diff+" seconds\n-- -- -- --");
-					}catch(Exception e)	{ print("Invalid temperature value!"); }
+					}catch(Exception e)	{ print("Invalid values!"); }
 
 				}else { // Genetic
 					try{
 						GASolver g = new GASolver(Integer.parseInt(populationField.getText().toString()));
+						print("I don't do anything currently lolololololololololololololololololololololololololololol");
 					}catch(Exception e) { print("Invalid values!"); }
 				}
 			}
 		});
-		btnGo.setBounds(49, 208, 89, 23);
+		btnGo.setBounds(58, 333, 70, 25);
 		frmOreoSoftwareProject.getContentPane().add(btnGo);
 
 		JButton button = new JButton("CLEAR");
@@ -188,16 +223,13 @@ public class mainWindow {
 			public void actionPerformed(ActionEvent arg0) {
 				textPane.setText("");
 				temperatureField.setText("");
+				coolingField.setText("");
 				populationField.setText("");
 				percentageField.setText("");
 			}
 		});
-		button.setBounds(53, 238, 81, 22);
+		button.setBounds(58, 372, 70, 25);
 		frmOreoSoftwareProject.getContentPane().add(button);
-
-		JScrollPane scrollPane = new JScrollPane(textPane);
-		scrollPane.setBounds(186, 11, 248, 249);
-		frmOreoSoftwareProject.getContentPane().add(scrollPane);
 
 	}
 

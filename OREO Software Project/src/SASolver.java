@@ -4,14 +4,14 @@ public class SASolver {
 	private CandidateSolution sol;
 	int count;
 	
-	public void solve(CandidateSolution s, double t){
+	public void solve(CandidateSolution s, double t,double cooling){
 		temperature = t;
 		count = 0;
 		this.sol = s;
 		while (temperature > 0.001){
 			count++;
 			sol.tweakSA((double) temperature);
-			temperature*=0.999;
+			temperature*=cooling;
 		}
 	}
 }
