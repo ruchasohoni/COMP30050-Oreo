@@ -1,21 +1,19 @@
 import java.awt.EventQueue;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import javax.swing.JTextArea;
 
 public class mainWindow {
 
 	private JFrame frmOreoSoftwareProject;
 	private double temperature = 500;
+	private JTextArea textPane = new JTextArea();
 
 	private PreferenceTable p = new PreferenceTable("Project allocation data.tsv");
 	private CandidateSolution temp = new CandidateSolution(p);
@@ -69,7 +67,6 @@ public class mainWindow {
 		lblSelectTheType.setBounds(10, 11, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblSelectTheType);
 
-		JTextArea textPane = new JTextArea();
 		textPane.setEditable(false);
 		textPane.setBounds(186, 11, 248, 249);
 		frmOreoSoftwareProject.getContentPane().add(textPane);
@@ -78,14 +75,14 @@ public class mainWindow {
 		btnGo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (comboBox.getSelectedItem() == "Simulated Annealing"){
-					textPane.append(("Current energy... " + temp.getEnergy()));
+					print(("Start energy... " + temp.getEnergy()));
 					long startTime = System.currentTimeMillis();
 					SASolver sa = new SASolver();
 					sa.solve(temp,temperature);
 					long endTime = System.currentTimeMillis();
-					textPane.append(("\nNew energy... " + temp.getEnergy()));
+					print(("New energy... " + temp.getEnergy()));
 					float diff = (float)(endTime-startTime)/1000;
-					textPane.append("\nTime = "+diff+" seconds\n-- -- -- --\n");
+					print("Time = "+diff+" seconds\n-- -- -- --");
 				}else {
 					// Genetic
 				}
@@ -103,5 +100,10 @@ public class mainWindow {
 		button.setBounds(18, 239, 81, 22);
 		frmOreoSoftwareProject.getContentPane().add(button);
 
+	}
+	
+
+	private void print(String s){
+		textPane.append(s+"\n");
 	}
 }
