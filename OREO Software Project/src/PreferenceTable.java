@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class PreferenceTable  {
+public class PreferenceTable  { 
 	/**loadContentFromFile reads and parses the text file appropriately,
 	and then updates this private instance variable.
 	the getTable method then makes this vector available (and stops it from being edited)*/

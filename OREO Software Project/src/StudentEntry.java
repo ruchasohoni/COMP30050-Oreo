@@ -3,7 +3,7 @@ import java.util.*;
 
 public class StudentEntry {
 
-	private String name;
+	private String name; 
 	private List<String> preferences = new ArrayList<String>();
 	private boolean preassigned = false;
 	private int numberStatedPreferences;

@@ -7,7 +7,6 @@ public class Test {
 			CandidateSolution temp = new CandidateSolution(p);
 			System.out.println("Current energy... " + temp.getEnergy());
 			long startTime = System.currentTimeMillis();
-			new SASolver(temp, 10.0);
 			long endTime = System.currentTimeMillis();
 			System.out.println("New energy... " + temp.getEnergy());
 			float diff = (float)(endTime-startTime)/1000;
