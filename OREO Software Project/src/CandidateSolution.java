@@ -83,32 +83,28 @@ public class CandidateSolution {
 		CandidateAssignment randomAssignment = getRandomAssignment();
 		randomAssignment.randomizeAssignment();
 		int newEnergy = getEnergy();
-		 if (oldEnergy < newEnergy){
+		if (oldEnergy < newEnergy){
 			randomAssignment.undoChange();
 			return false;
-		 } 
-		 else return true;
+		} 
+		else return true;
 	}	 
-	
+
 	public void tweakSA(double T){
 		int oldEnergy = getEnergy();
 		CandidateAssignment randomAssignment = getRandomAssignment();
 		randomAssignment.randomizeAssignment();
 		int newEnergy = getEnergy();
-		if (oldEnergy < newEnergy){
-			if(!boltzmann((newEnergy - oldEnergy), T)){
-				randomAssignment.undoChange();
-			}
+		if (oldEnergy < newEnergy && boltzmann((newEnergy - oldEnergy), T)){
+			randomAssignment.undoChange();
 		}
 	}
 
-
 	private boolean boltzmann(double difference, double T) {
 		double rand = Math.random();
-//		System.out.println(1/Math.pow(Math.E, difference/T) + "\t" + rand);
 		if(rand < 1/Math.pow(Math.E, difference/T)){
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
 }
