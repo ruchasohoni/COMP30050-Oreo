@@ -57,6 +57,7 @@ public class mainWindow {
 		frmOreoSoftwareProject.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmOreoSoftwareProject.getContentPane().setLayout(null);
 		frmOreoSoftwareProject.setIconImage(new ImageIcon("icon.png").getImage());
+		textPane.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
 
 		textPane.setEditable(false);
 
@@ -68,12 +69,8 @@ public class mainWindow {
 			public void focusGained(FocusEvent e) {
 				temperatureField.setText("");
 			}
-
 			@Override
-			public void focusLost(FocusEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void focusLost(FocusEvent e) { }
 		});
 		temperatureField.setBounds(33, 80, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(temperatureField);
@@ -86,12 +83,8 @@ public class mainWindow {
 			public void focusGained(FocusEvent e) {
 				populationField.setText("");
 			}
-
 			@Override
-			public void focusLost(FocusEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void focusLost(FocusEvent e) { }
 		});
 		populationField.setBounds(33, 130, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(populationField);
@@ -104,17 +97,14 @@ public class mainWindow {
 			public void focusGained(FocusEvent e) {
 				percentageField.setText("");
 			}
-
 			@Override
-			public void focusLost(FocusEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void focusLost(FocusEvent e) { }
 		});
 		percentageField.setBounds(33, 180, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(percentageField);
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
 		comboBox.addItem("Simulated Annealing");
 		comboBox.addItem("Genetic Algorithm");
 		comboBox.setMaximumRowCount(2);
@@ -137,33 +127,35 @@ public class mainWindow {
 		        }
 		    }
 		});
-		comboBox.setBounds(18, 30, 150, 20);
+		comboBox.setBounds(18, 30, 150, 25);
 		comboBox.setSelectedItem("Simulated Annealing");
 		frmOreoSoftwareProject.getContentPane().add(comboBox);
 
 		JLabel lblSelectTheType = new JLabel("Select the algorithm to use");
+		lblSelectTheType.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
 		lblSelectTheType.setBounds(10, 8, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblSelectTheType);
 
 		JLabel lblTemperaturega = new JLabel("Temperature");
 		lblTemperaturega.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTemperaturega.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblTemperaturega.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
 		lblTemperaturega.setBounds(10, 58, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblTemperaturega);
 
 		JLabel lblPopulationSizega = new JLabel("Population Size");
 		lblPopulationSizega.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPopulationSizega.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblPopulationSizega.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
 		lblPopulationSizega.setBounds(10, 108, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblPopulationSizega);
 
 		JLabel lblTopPercentga = new JLabel("Top Percent");
 		lblTopPercentga.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTopPercentga.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblTopPercentga.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
 		lblTopPercentga.setBounds(10, 158, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblTopPercentga);
 
 		JButton btnGo = new JButton("GO!");
+		btnGo.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
 		btnGo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (comboBox.getSelectedItem() == "Simulated Annealing"){ // SA
@@ -190,6 +182,7 @@ public class mainWindow {
 		frmOreoSoftwareProject.getContentPane().add(btnGo);
 
 		JButton button = new JButton("CLEAR");
+		button.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				textPane.setText("");
