@@ -63,7 +63,7 @@ public class mainWindow {
 		comboBox.setBounds(18, 36, 150, 20);
 		frmOreoSoftwareProject.getContentPane().add(comboBox);
 
-		JLabel lblSelectTheType = new JLabel("Select the type of algorithm to use");
+		JLabel lblSelectTheType = new JLabel("Select the algorithm to use");
 		lblSelectTheType.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectTheType.setLabelFor(comboBox);
 		lblSelectTheType.setBounds(10, 11, 166, 14);
