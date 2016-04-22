@@ -16,6 +16,10 @@ public class StudentEntry {
 	public String getStudentName(){
 		return name;
 	}
+	
+	public int getIndexOfAssignment(String pname){
+		return preferences.indexOf(pname.intern());
+	}
 
 	public List<String> getOrderedPreferences(){
 		return preferences;
@@ -24,6 +28,10 @@ public class StudentEntry {
 	/**will select a preference at random from their list of ordered preferences*/
 	public String getRandomPreference(){
 		return preferences.get(RND.nextInt(preferences.size()));
+	}
+	
+	public String getTopPreference(){
+		return preferences.get(0);
 	}
 
 	/**Checks if a string is already in their list of preferences*/

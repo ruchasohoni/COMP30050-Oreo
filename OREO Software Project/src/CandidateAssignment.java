@@ -32,12 +32,21 @@ public class CandidateAssignment {
 	public int getEnergy(){
 		return (int) Math.pow(student.getRanking(assignment)+1, 2);
 	}
+	
+	private double getIndexOfAssignment() {
+		return student.getIndexOfAssignment(assignment);
+	}
 
 	/**
 	 * When a students assignment is changed, their last assignment is stored locally in case the change needs to be reversed.
 	 */
 	public String getLastAssignment(){
 		return lastAssignment;
+	}
+	
+	public double getSatisfaction(){
+		double index = getIndexOfAssignment();
+		return 1.00 - (index*(1.00/11.00));
 	}
 
 	public String getStudentName(){

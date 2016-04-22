@@ -30,6 +30,11 @@ public class CandidateSolution {
 			assignments.add(assignment);
 		}
 	}
+
+	public List<CandidateAssignment> getAssignments(){
+		return assignments;
+	}
+	
 	/**
 	 * Returns the assignment object for a given student name. As  the StudentEntry is stored locally in each assignment
 	 * object, that means all the data stored in the StudentEntry is easily accessible using the accessor methods from the 
@@ -76,6 +81,15 @@ public class CandidateSolution {
 
 	public CandidateAssignment getRandomAssignment(){
 		return assignments.get(RND.nextInt(assignments.size()));
+	}
+	
+	public double getSatisfaction(){
+		double totalSatisfaction = 0;
+		for (CandidateAssignment a : assignments){
+			totalSatisfaction += a.getSatisfaction();
+		}
+		return totalSatisfaction/assignments.size();
+		
 	}
 
 	public boolean tweakHC(){
