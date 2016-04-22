@@ -57,7 +57,7 @@ public class mainWindow {
 		frmOreoSoftwareProject.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmOreoSoftwareProject.getContentPane().setLayout(null);
 		frmOreoSoftwareProject.setIconImage(new ImageIcon("icon.png").getImage());
-		textPane.setFont(new Font("Comic Sans MS", Font.PLAIN, 13));
+		textPane.setFont(new Font("Papyrus", Font.PLAIN, 13));
 
 		textPane.setEditable(false);
 
@@ -72,7 +72,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		temperatureField.setBounds(33, 80, 120, 20);
+		temperatureField.setBounds(33, 85, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(temperatureField);
 
 		JTextField populationField = new JTextField();
@@ -86,7 +86,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		populationField.setBounds(33, 130, 120, 20);
+		populationField.setBounds(33, 133, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(populationField);
 
 		JTextField percentageField = new JTextField();
@@ -100,7 +100,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		percentageField.setBounds(33, 180, 120, 20);
+		percentageField.setBounds(33, 181, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(percentageField);
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
@@ -127,31 +127,32 @@ public class mainWindow {
 		        }
 		    }
 		});
-		comboBox.setBounds(18, 30, 150, 25);
+		comboBox.setBounds(18, 32, 150, 25);
 		comboBox.setSelectedItem("Simulated Annealing");
 		frmOreoSoftwareProject.getContentPane().add(comboBox);
 
 		JLabel lblSelectTheType = new JLabel("Select the algorithm to use");
+		lblSelectTheType.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectTheType.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
-		lblSelectTheType.setBounds(10, 8, 166, 14);
+		lblSelectTheType.setBounds(10, 7, 166, 18);
 		frmOreoSoftwareProject.getContentPane().add(lblSelectTheType);
 
 		JLabel lblTemperaturega = new JLabel("Temperature");
 		lblTemperaturega.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTemperaturega.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblTemperaturega.setBounds(10, 58, 166, 14);
+		lblTemperaturega.setBounds(10, 64, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblTemperaturega);
 
 		JLabel lblPopulationSizega = new JLabel("Population Size");
 		lblPopulationSizega.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPopulationSizega.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblPopulationSizega.setBounds(10, 108, 166, 14);
+		lblPopulationSizega.setBounds(10, 112, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblPopulationSizega);
 
 		JLabel lblTopPercentga = new JLabel("Top Percent");
 		lblTopPercentga.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTopPercentga.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblTopPercentga.setBounds(10, 158, 166, 14);
+		lblTopPercentga.setBounds(10, 160, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblTopPercentga);
 
 		JButton btnGo = new JButton("GO!");
@@ -191,7 +192,7 @@ public class mainWindow {
 				percentageField.setText("");
 			}
 		});
-		button.setBounds(53, 239, 81, 22);
+		button.setBounds(53, 238, 81, 22);
 		frmOreoSoftwareProject.getContentPane().add(button);
 
 		JScrollPane scrollPane = new JScrollPane(textPane);

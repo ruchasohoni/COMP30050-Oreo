@@ -24,7 +24,7 @@ public class Test {
 		for(int i = 0; i < 1000; i++){
 			population.add(new CandidateSolution(p));
 		}
-		GASolver ga = new GASolver();
+		GASolver ga = new GASolver(0);
 		ga.sortPopulation(population);
 	}
 }
