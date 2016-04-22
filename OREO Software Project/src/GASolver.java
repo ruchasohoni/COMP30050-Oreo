@@ -3,10 +3,9 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class GASolver {
-	int N = 1000;
 	int PERCENT = 25;
 	
-	public void GSolver(){
+	public GASolver(int N){
 		ArrayList<CandidateSolution> population;
 		PreferenceTable p = new PreferenceTable("Project allocation data.tsv");
 		population = new ArrayList<CandidateSolution>();
