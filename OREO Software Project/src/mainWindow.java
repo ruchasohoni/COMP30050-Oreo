@@ -208,7 +208,7 @@ public class mainWindow {
 
 				}else { // Genetic
 					try{
-						GASolver g = new GASolver(Integer.parseInt(populationField.getText().toString()));
+						//GASolver g = new GASolver(Integer.parseInt(populationField.getText().toString()));
 						print("I don't do anything currently lolololololololololololololololololololololololololololol");
 					}catch(Exception e) { print("Invalid values!"); }
 				}

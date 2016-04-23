@@ -6,6 +6,9 @@ public class CandidateSolution {
 	private List<CandidateAssignment> assignments;
 	private Random RND = new Random();
 	private static final int PENALTY = 1000;
+	
+	public CandidateSolution() {
+	}
 
 	/**
 	 * This class stores a collection of individual assignments. Solutions can be compared by how desirable they are.
@@ -29,6 +32,18 @@ public class CandidateSolution {
 			CandidateAssignment assignment = new CandidateAssignment(student);
 			assignments.add(assignment);
 		}
+	}
+	
+	/**
+	 * Manually assigns a list of assignments. Returns false if list is not empty
+	 * This method is used when creating solutions from other solutions and not a preference table.
+	 */
+	public boolean setAssignments(List<CandidateAssignment> list){
+		if(assignments == null){
+			assignments = list;
+			return true;
+		}
+		else return false;
 	}
 
 	public List<CandidateAssignment> getAssignments(){

@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class Test {
 
 	public static void main(String[] args) {
@@ -14,17 +13,22 @@ public class Test {
 			float diff = (float)(endTime-startTime)/1000;
 			System.out.printf("Time = %.4f seconds\n-- -- -- --\n", diff);
 			
-			testGASolver();
+			testGA(100);
 		}
 	}
 	
-	private static void testGASolver(){
+	private static void testGA(int N){
+		System.out.println("GA Solver Test:");
+		ArrayList<CandidateSolution> population;
 		PreferenceTable p = new PreferenceTable("Project allocation data.tsv");
-		ArrayList<CandidateSolution> population = new ArrayList<CandidateSolution>();
-		for(int i = 0; i < 1000; i++){
+		population = new ArrayList<CandidateSolution>();
+		for(int i = 0; i < N; i++){
 			population.add(new CandidateSolution(p));
 		}
-		GASolver ga = new GASolver(0);
-		ga.sortPopulation(population);
+		long startTime = System.currentTimeMillis();
+		GASolver ga = new GASolver(population, 10, 25);
+		long endTime = System.currentTimeMillis();
+		float diff = (float)(endTime-startTime)/1000;
+		System.out.printf("Time = %.4f seconds\n-- -- -- --\n", diff);
 	}
 }
