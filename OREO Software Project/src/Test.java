@@ -18,17 +18,19 @@ public class Test {
 	}
 	
 	private static void testGA(int N){
-		System.out.println("GA Solver Test:");
+		System.out.println("**************\nGA Solver Test\n");
+		//create population
 		ArrayList<CandidateSolution> population;
 		PreferenceTable p = new PreferenceTable("Project allocation data.tsv");
 		population = new ArrayList<CandidateSolution>();
 		for(int i = 0; i < N; i++){
 			population.add(new CandidateSolution(p));
 		}
+		
 		long startTime = System.currentTimeMillis();
 		GASolver ga = new GASolver(population, 10, 25);
 		long endTime = System.currentTimeMillis();
 		float diff = (float)(endTime-startTime)/1000;
-		System.out.printf("Time = %.4f seconds\n-- -- -- --\n", diff);
+		System.out.printf("Time = %.4f seconds\n**************\n", diff);
 	}
 }

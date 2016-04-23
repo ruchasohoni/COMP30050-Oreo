@@ -10,34 +10,34 @@ public class GASolver {
 	 */
 	public GASolver(ArrayList<CandidateSolution> popul, int generations, int percent){
 		population = popul;
+		
+		//initial best solution
 		CandidateSolution best = null;
 		int maxFit = -100000;
-		//System.out.println("Old population\n------------");
 		for (CandidateSolution sol : population) {
-			//System.out.println(sol.getFitness());
 			if(sol.getFitness() > maxFit){
 				maxFit = sol.getFitness();
 				best = sol;
 			}
 		}
-		System.out.println("\nOld best solution: " + best.getFitness());
+		System.out.println("Old: " + best.getFitness());
 		
 		for(int i = 0; i < generations; i++){
 			sortPopulation();
 			newGeneration(percent);
 		}
 		
+		//final best solution
 		maxFit = -100000;
-		//System.out.println("\nNew population\n------------");
 		for (CandidateSolution sol : population) {
-			//System.out.println(sol.getFitness());
 			if(sol.getFitness() > maxFit){
 				maxFit = sol.getFitness();
 				best = sol;
 			}
 		}
-		System.out.println("New best solution: " + best.getFitness());
+		System.out.println("New: " + best.getFitness());
 	}
+	
 	/**
 	 * Sorts population in ascending order by fitness with best fitness solution first in the list
 	 */
