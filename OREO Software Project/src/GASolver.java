@@ -44,9 +44,9 @@ public class GASolver {
 	private void sortPopulation(){
 		Collections.sort(population, new Comparator<CandidateSolution>(){
 		     public int compare(CandidateSolution s1, CandidateSolution s2){
-		         if(s1.getEnergy() == s2.getEnergy())
+		         if(s1.energy == s2.energy)
 		             return 0;
-		         return s1.getEnergy() < s2.getEnergy() ? -1 : 1;
+		         return s1.energy < s2.energy ? -1 : 1;
 		     }
 		});
 	}

@@ -6,6 +6,7 @@ public class CandidateSolution {
 	private List<CandidateAssignment> assignments;
 	private Random RND = new Random();
 	private static final int PENALTY = 1000;
+	public int energy;
 	
 	public CandidateSolution() {
 	}
@@ -32,6 +33,7 @@ public class CandidateSolution {
 			CandidateAssignment assignment = new CandidateAssignment(student);
 			assignments.add(assignment);
 		}
+		energy = getEnergy();
 	}
 	
 	/**
@@ -41,6 +43,7 @@ public class CandidateSolution {
 	public boolean setAssignments(List<CandidateAssignment> list){
 		if(assignments == null){
 			assignments = list;
+			energy = getEnergy();
 			return true;
 		}
 		else return false;
