@@ -145,6 +145,7 @@ public class mainWindow {
 		comboBox.addActionListener (new ActionListener () {
 			public void actionPerformed(ActionEvent e) {
 				if(comboBox.getSelectedItem() == "Simulated Annealing"){
+					print("Default values of SA expect a runtime of  ~4 seconds");
 					temperatureField.setText("300");
 					coolingField.setText("0.999");
 					populationField.setText("");
@@ -156,11 +157,12 @@ public class mainWindow {
 					generationField.setEditable(false);
 					percentageField.setEditable(false);
 				} else {
+					print("Default values of GA expect a runtime of ~45 seconds");
 					temperatureField.setText("");
 					coolingField.setText("");
-					populationField.setText("800");
-					generationField.setText("25");
-					percentageField.setText("20");
+					populationField.setText("12000");
+					generationField.setText("90");
+					percentageField.setText("25");
 					temperatureField.setEditable(false);
 					coolingField.setEditable(false);
 					populationField.setEditable(true);
@@ -280,13 +282,15 @@ public class mainWindow {
 				population.add(new CandidateSolution(p));
 			}
 			
-			GASolver g = new GASolver( population,
+			GASolver g = new GASolver();
+			CandidateSolution best = g.getSolution(population,
 					Integer.parseInt(generationField.getText()),
 					Integer.parseInt(percentageField.getText()));
 			long endTime = System.currentTimeMillis();
 			float diff = (float)(endTime-startTime)/1000;
+			print("Solution's fitness: " + best.getFitness());
 			print("Completed in "+diff+" seconds\n-- -- -- --");
-		}catch(Exception e) { print("Invalid values!\n" + e); }
+		}catch(Exception e) { print("Invalid values!\n"); }
 	}
 
 	private void print(String s){
