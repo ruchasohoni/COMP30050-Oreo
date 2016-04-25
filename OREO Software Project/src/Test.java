@@ -28,7 +28,8 @@ public class Test {
 		}
 		
 		long startTime = System.currentTimeMillis();
-//		GASolver ga = new GASolver(population, 500, 25);
+		GASolver ga = new GASolver();
+		ga.getSolution(population, 500, 2);
 		long endTime = System.currentTimeMillis();
 		float diff = (float)(endTime-startTime)/1000;
 		System.out.printf("Time = %.4f seconds\n**************\n", diff);

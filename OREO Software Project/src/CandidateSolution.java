@@ -94,7 +94,7 @@ public class CandidateSolution {
 	 * the better the solution is.
 	 */
 	public int getFitness(){
-		return getEnergy() * -1;
+		return energy * -1;
 	}
 
 	public CandidateAssignment getRandomAssignment(){
