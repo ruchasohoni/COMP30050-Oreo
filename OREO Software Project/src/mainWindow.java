@@ -37,7 +37,7 @@ public class mainWindow {
 					e.printStackTrace();
 				}
 			}
-		}); 
+		});
 	}
 
 	/**
@@ -273,12 +273,12 @@ public class mainWindow {
 					|| Integer.parseInt(generationField.getText()) < 1){
 				print("Invalid values, make sure population is greater than 1"
 						+ " and the percentage is between 1 and 100");
-				throw new Exception();
+				throw new Exception("Inputs out of bounds.");
 			}
 			long startTime = System.currentTimeMillis();
 			ArrayList<CandidateSolution> population = new ArrayList<CandidateSolution>();
 			
-			for(int i = 0; i < Integer.parseInt(populationField.getText().toString()); i++){
+			for(int i = 0; i < Integer.parseInt(populationField.getText()); i++){
 				population.add(new CandidateSolution(p));
 			}
 			
@@ -290,7 +290,7 @@ public class mainWindow {
 			float diff = (float)(endTime-startTime)/1000;
 			print("Solution's fitness: " + best.getFitness());
 			print("Completed in "+diff+" seconds\n-- -- -- --");
-		}catch(Exception e) { print("Invalid values!\n"); }
+		}catch(Exception e) { print("Invalid values! "+e+"\n"); } // remove +e when finalised
 	}
 
 	private void print(String s){
