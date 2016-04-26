@@ -1,27 +1,16 @@
-import java.awt.EventQueue;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import javax.swing.JTextArea;
-import java.awt.Font;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import java.util.ArrayList;
-import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class mainWindow {
 
 	private JFrame frmOreoSoftwareProject;
 	private JTextArea textPane = new JTextArea();
-
-	private PreferenceTable p = new PreferenceTable("Project allocation data.tsv");
-	private CandidateSolution temp = new CandidateSolution(p);
+	private PreferenceTable p;
+	private CandidateSolution temp;
+	private final JFileChooser fileChooser = new JFileChooser();
 
 	/**
 	 * Launch the application.
@@ -51,6 +40,18 @@ public class mainWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				"Tab-separated values","tsv");
+		fileChooser.setFileFilter(filter);
+
+		try{
+			p = new PreferenceTable("./Project allocation data.tsv");
+			temp = new CandidateSolution(p);
+		}catch(Exception e) {
+			chooseFile();
+		}
+
 		frmOreoSoftwareProject = new JFrame();
 		frmOreoSoftwareProject.setResizable(false);
 		frmOreoSoftwareProject.setTitle("OREO Software Project");
@@ -78,7 +79,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		temperatureField.setBounds(33, 97, 120, 20);
+		temperatureField.setBounds(32, 85, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(temperatureField);
 
 		JTextField coolingField = new JTextField();
@@ -92,7 +93,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		coolingField.setBounds(33, 151, 120, 20);
+		coolingField.setBounds(32, 133, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(coolingField);
 
 		JTextField populationField = new JTextField();
@@ -106,7 +107,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		populationField.setBounds(33, 205, 120, 20);
+		populationField.setBounds(32, 181, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(populationField);
 
 		JTextField generationField = new JTextField();
@@ -120,7 +121,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		generationField.setBounds(33, 259, 120, 20);
+		generationField.setBounds(32, 229, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(generationField);
 
 		JTextField percentageField = new JTextField();
@@ -134,7 +135,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		percentageField.setBounds(33, 313, 120, 20);
+		percentageField.setBounds(32, 277, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(percentageField);
 
 		JComboBox<String> comboBox = new JComboBox<String>();
@@ -171,49 +172,49 @@ public class mainWindow {
 				}
 			}
 		});
-		comboBox.setBounds(18, 38, 150, 25);
+		comboBox.setBounds(17, 32, 150, 25);
 		comboBox.setSelectedItem("Simulated Annealing");
 		frmOreoSoftwareProject.getContentPane().add(comboBox);
 
 		JLabel lblSelectTheType = new JLabel("Select the algorithm to use");
 		lblSelectTheType.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectTheType.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
-		lblSelectTheType.setBounds(10, 10, 166, 18);
+		lblSelectTheType.setBounds(9, 7, 166, 18);
 		frmOreoSoftwareProject.getContentPane().add(lblSelectTheType);
 
 		JLabel lblTemperaturega = new JLabel("Temperature");
 		lblTemperaturega.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTemperaturega.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblTemperaturega.setBounds(10, 73, 166, 14);
+		lblTemperaturega.setBounds(9, 64, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblTemperaturega);
 
 		JLabel lblDecrimentFactor = new JLabel("Cooling factor");
 		lblDecrimentFactor.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDecrimentFactor.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblDecrimentFactor.setBounds(10, 127, 166, 14);
+		lblDecrimentFactor.setBounds(9, 112, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblDecrimentFactor);
 
 		JLabel lblPopulationSizega = new JLabel("Population Size");
 		lblPopulationSizega.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPopulationSizega.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblPopulationSizega.setBounds(10, 181, 166, 14);
+		lblPopulationSizega.setBounds(9, 160, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblPopulationSizega);
 
 		JLabel lblGenerationsga = new JLabel("Number of Generations");
 		lblGenerationsga.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGenerationsga.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblGenerationsga.setBounds(10, 235, 166, 14);
+		lblGenerationsga.setBounds(9, 208, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblGenerationsga);
 
 		JLabel lblTopPercentga = new JLabel("Top Percent");
 		lblTopPercentga.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTopPercentga.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblTopPercentga.setBounds(10, 289, 166, 14);
+		lblTopPercentga.setBounds(9, 256, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblTopPercentga);
 
 		// ------ THIS IS WHAT HAPPENS WHEN "GO" IS PRESSED ------ //
 		// ------ I'M PUTTING COMMENTS IN TO FIND IT EASILY ------ //
-		
+
 		JButton btnGo = new JButton("GO!");
 		btnGo.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
 		btnGo.addActionListener(new ActionListener() {
@@ -226,7 +227,7 @@ public class mainWindow {
 				}
 			}
 		});
-		btnGo.setBounds(58, 343, 70, 25);
+		btnGo.setBounds(57, 304, 70, 25);
 		frmOreoSoftwareProject.getContentPane().add(btnGo);
 
 		JButton button = new JButton("CLEAR");
@@ -241,9 +242,32 @@ public class mainWindow {
 				percentageField.setText("");
 			}
 		});
-		button.setBounds(58, 378, 70, 25);
+		button.setBounds(57, 336, 70, 25);
 		frmOreoSoftwareProject.getContentPane().add(button);
 
+		JButton fileButton = new JButton("Choose File");
+		fileButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
+		fileButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				chooseFile();
+			}
+		});				
+		fileButton.setBounds(46, 368, 92, 25);
+		frmOreoSoftwareProject.getContentPane().add(fileButton);
+
+	}
+
+	private void chooseFile(){
+		int result = fileChooser.showOpenDialog(frmOreoSoftwareProject);
+		if(result == 0)
+			if(fileChooser.getSelectedFile().getName().endsWith("tsv")) {
+				p = new PreferenceTable(fileChooser.getSelectedFile().getAbsolutePath());
+				fileChooser.setCurrentDirectory(fileChooser.getSelectedFile());
+			}
+			else{
+				fileChooser.cancelSelection();
+				print("Invalid file type!");
+			}
 	}
 
 	private void doSA(JTextField temperatureField, JTextField coolingField) {
@@ -277,11 +301,11 @@ public class mainWindow {
 			}
 			long startTime = System.currentTimeMillis();
 			ArrayList<CandidateSolution> population = new ArrayList<CandidateSolution>();
-			
+
 			for(int i = 0; i < Integer.parseInt(populationField.getText()); i++){
 				population.add(new CandidateSolution(p));
 			}
-			
+
 			GASolver g = new GASolver();
 			CandidateSolution best = g.getSolution(population,
 					Integer.parseInt(generationField.getText()),

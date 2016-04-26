@@ -19,8 +19,8 @@ public class PreferenceTable  {
 
 	/**I used a relative file path rather than absolute, as this way
 	 it doesn't matter where the program/file is as long as they are in the right directory*/
-	public PreferenceTable(String fileName) {
-		String file = new String("./" + fileName); 
+	public PreferenceTable(String path) {
+		String file = new String(path); 
 		table = loadContentFromFile(file);	
 		loadStudents();
 	}	
