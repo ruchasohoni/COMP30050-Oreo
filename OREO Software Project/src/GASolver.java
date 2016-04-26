@@ -12,6 +12,7 @@ public class GASolver {
 	 * @param percent: Percent of population selected for breeding
 	 */
 	public CandidateSolution getSolution(ArrayList<CandidateSolution> popul, int generations, int percent){
+		population = popul;
 		sortPopulation();
 		for(int i = 0; i < generations; i++){
 			newGeneration(percent);
