@@ -62,17 +62,12 @@ public class GASolver {
 		
 		sortPopulation();
 		//Cull
-		for(int i = 0; i < 3*(num); i++){
-			population.remove(i);
-		}
-		
-		//TODO Fix this
-		//For some reason this works but the correct implementation should be:
-		/*
 		for(int i = 0; i < 3*(num/2); i++){
 			population.remove(i);
 		}
-		*/
+		
+		//Note: Changing (num/2) to be num greatly improves the performance and result of the solution
+		//		maybe we should try culling the population by a greater number than the number of solutions we add?
 	}
 
 	private CandidateSolution mate(List<CandidateAssignment> mom, List<CandidateAssignment> dad){
