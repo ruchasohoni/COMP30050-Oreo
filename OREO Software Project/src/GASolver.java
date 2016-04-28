@@ -51,8 +51,8 @@ public class GASolver {
 			num--;
 		}
 		for(int i = N-num; i < N; i = i + 2){
-			// For each set of parents, create three children
-			for(int j = 0; j < 3; j++){
+			// For each set of parents, create two children
+			for(int j = 0; j < 2; j++){
 				population.add(mate(
 						population.get(i).getAssignments(),
 						population.get(i+1).getAssignments()
@@ -62,12 +62,9 @@ public class GASolver {
 		
 		sortPopulation();
 		//Cull
-		for(int i = 0; i < 3*(num/2); i++){
+		for(int i = 0; i < num; i++){
 			population.remove(i);
 		}
-		
-		//Note: Changing (num/2) to be num greatly improves the performance and result of the solution
-		//		maybe we should try culling the population by a greater number than the number of solutions we add?
 	}
 
 	private CandidateSolution mate(List<CandidateAssignment> mom, List<CandidateAssignment> dad){

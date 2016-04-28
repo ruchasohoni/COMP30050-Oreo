@@ -13,7 +13,7 @@ public class Test {
 			float diff = (float)(endTime-startTime)/1000;
 			System.out.printf("Time = %.4f seconds\n-- -- -- --\n", diff);
 			
-			testGA(50000);
+			testGA(12000);
 		}
 	}
 	
@@ -29,7 +29,7 @@ public class Test {
 		
 		long startTime = System.currentTimeMillis();
 		GASolver ga = new GASolver();
-		System.out.println(ga.getSolution(population, 300, 1).getFitness());
+		System.out.println(ga.getSolution(population, 90, 25).getFitness());
 		long endTime = System.currentTimeMillis();
 		float diff = (float)(endTime-startTime)/1000;
 		System.out.printf("Time = %.4f seconds\n**************\n", diff);
