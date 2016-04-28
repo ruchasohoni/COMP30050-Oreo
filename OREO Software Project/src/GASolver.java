@@ -46,27 +46,33 @@ public class GASolver {
 	 */
 	private void newGeneration(int percent){
 		int N = population.size();
-		int num = (int)(N * ((float)percent / 100)); 
+		int num = (int)(N * ((float)percent / 100));
 		if(num%2==1){
 			num--;
 		}
 		for(int i = N-num; i < N; i = i + 2){
-			// For each generation of mating, parents have two children
-			population.add(mate(
-					population.get(i).getAssignments(),
-					population.get(i+1).getAssignments()
-			));
-			population.add(mate(
-					population.get(i).getAssignments(),
-					population.get(i+1).getAssignments()
-			));
+			// For each set of parents, create three children
+			for(int j = 0; j < 3; j++){
+				population.add(mate(
+						population.get(i).getAssignments(),
+						population.get(i+1).getAssignments()
+				));
+			}
 		}
 		
 		sortPopulation();
 		//Cull
-		for(int i = 0; i < num; i++){
+		for(int i = 0; i < 3*(num); i++){
 			population.remove(i);
 		}
+		
+		//TODO Fix this
+		//For some reason this works but the correct implementation should be:
+		/*
+		for(int i = 0; i < 3*(num/2); i++){
+			population.remove(i);
+		}
+		*/
 	}
 
 	private CandidateSolution mate(List<CandidateAssignment> mom, List<CandidateAssignment> dad){
