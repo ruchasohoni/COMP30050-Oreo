@@ -12,6 +12,7 @@ public class PreferenceTable  {
 	private List<StudentEntry> studentList = new ArrayList<StudentEntry>();
 	private	Hashtable<String, StudentEntry> studentLookup =	new	Hashtable<String, StudentEntry>();	
 	private Random RND = new Random();
+	private int MAX_PREFS = 12;
 
 	public PreferenceTable() {
 	}
@@ -23,6 +24,7 @@ public class PreferenceTable  {
 		String file = new String(path);
 		table = loadContentFromFile(file);
 		loadStudents();
+		fillPreferencesOfAll(MAX_PREFS);
 	}	
 
 	public Vector<Vector<String>> getTable(){
