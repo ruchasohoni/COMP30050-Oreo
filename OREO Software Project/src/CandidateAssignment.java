@@ -17,6 +17,9 @@ public class CandidateAssignment {
 		assignment = student.getRandomPreference();
 	}
 	
+	/**
+	 * Allows a CandidateAssignment object to be copied without keeping the same object ID as the source.
+	 */
 	public CandidateAssignment(CandidateAssignment a){
 		this.student = new StudentEntry(a.getStudent());
 		lastAssignment = a.getLastAssignment();
@@ -39,6 +42,9 @@ public class CandidateAssignment {
 		return (int) Math.pow(student.getRanking(assignment)+1, 2);
 	}
 	
+	/***
+	 * Returns the ranking of the student's assignment.
+	 */
 	private double getIndexOfAssignment() {
 		return student.getIndexOfAssignment(assignment);
 	}
@@ -50,6 +56,11 @@ public class CandidateAssignment {
 		return lastAssignment;
 	}
 	
+	/**
+	 * Calculates the satisfaction of a student based on the position of their assignment in their list of ordered preferences.
+	 * This function returns a value between 0 and 1 where 0 means they were assigned their bottom preference 1 means complete 
+	 * satisfaction (they were assigned their number one preference).
+	 */
 	public double getSatisfaction(){
 		double index = getIndexOfAssignment();
 		return 1.00 - (index*(1.00/11.00));

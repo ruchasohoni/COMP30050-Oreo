@@ -109,10 +109,16 @@ public class CandidateSolution {
 		return energy * -1;
 	}
 
+	/**
+	 * Returns a random assignment from this solution. 
+	 */
 	public CandidateAssignment getRandomAssignment(){
 		return assignments.get(RND.nextInt(assignments.size()));
 	}
 	
+	/**
+	 * Returns the average satisfaction levels of every assignment in the solution.
+	 */
 	public double getSatisfaction(){
 		double totalSatisfaction = 0;
 		for (CandidateAssignment a : assignments){
@@ -122,18 +128,11 @@ public class CandidateSolution {
 		
 	}
 
-	public boolean tweakHC(){
-		int oldEnergy = getEnergy();
-		CandidateAssignment randomAssignment = getRandomAssignment();
-		randomAssignment.randomizeAssignment();
-		int newEnergy = getEnergy();
-		if (oldEnergy < newEnergy){
-			randomAssignment.undoChange();
-			return false;
-		} 
-		else return true;
-	}	 
-
+	/**
+	 * Makes a change to a random assignment in the solution. If the change results in a lower
+	 * energy, the change is kept. If not, the increase in energy is passed into the Boltzmann
+	 * distribution function which generates the probability of the change being kept. 
+	 */
 	public void tweakSA(double T){
 		int oldEnergy = getEnergy();
 		CandidateAssignment randomAssignment = getRandomAssignment();
@@ -143,7 +142,11 @@ public class CandidateSolution {
 			randomAssignment.undoChange();
 		}
 	}
-
+	
+	/**
+	 * Generates the probability of a given energy level existing in a system with temperature T.
+	 * Then generates a random variable to see if the change from TweakSA should be kept or not.
+	 */
 	private boolean boltzmann(double difference, double T) {
 		double rand = Math.random();
 		if(rand < 1/Math.pow(Math.E, difference/T)){

@@ -103,13 +103,4 @@ public class StudentEntry {
 		}
 		return -1;
 	}
-
-//	public String toString(){
-//		String student = "";
-//		student += "Name: " + name + "\nPreassigned project: " + preassigned + "\n";
-//		student += "Number of stated preferences: " + numberStatedPreferences + "\n";
-//		student += "Number of preferences : " + getNumberPreferences() + "\n";
-//		student += "Preferences: " + preferences;
-//		return student;
-//	}
 }
