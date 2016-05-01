@@ -21,6 +21,18 @@ public class CandidateSolution {
 		assignments = new ArrayList<CandidateAssignment>();
 		fillAssignments();
 	}
+	
+	/**
+	 * Constructor that makes a copy of a solution without keeping the reference ID.
+	 */
+	public CandidateSolution(CandidateSolution s, PreferenceTable pref){
+		 List<CandidateAssignment> as = s.getAssignments();
+		 assignments = new ArrayList<CandidateAssignment>();
+		 for (CandidateAssignment assignment : as){
+			 CandidateAssignment a = new CandidateAssignment(assignment);
+			 assignments.add(a);
+		 }
+	}
 
 	/**
 	 * Goes through the list of all student entries, and creates a CandidateAssignment object for each student. As each
@@ -140,12 +152,12 @@ public class CandidateSolution {
 		return true;
 	}
 	
-	public String toString(){
-		String s = ("STUDENT NAME\tASSIGNMENT\n");
-		for(CandidateAssignment current : assignments){
-			s += current.getStudentName() + "\t";
-			s += current.getAssignment() + "\n";
-		}
-		return s;
-	}
+//	public String toString(){
+//		String s = ("STUDENT NAME\tASSIGNMENT\n");
+//		for(CandidateAssignment current : assignments){
+//			s += current.getStudentName() + "\t";
+//			s += current.getAssignment() + "\n";
+//		}
+//		return s;
+//	}
 }

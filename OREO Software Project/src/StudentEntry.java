@@ -12,6 +12,13 @@ public class StudentEntry {
 	public StudentEntry(String name){
 		this.name = name;
 	}
+	
+	public StudentEntry(StudentEntry e1){
+		name = e1.getStudentName();
+		preferences = new ArrayList<String>(e1.getOrderedPreferences());
+		preassigned = e1.hasPreassignedProject();
+		numberStatedPreferences = e1.getNumberOfStatedPreferences();
+	}
 
 	public String getStudentName(){
 		return name;
@@ -97,12 +104,12 @@ public class StudentEntry {
 		return -1;
 	}
 
-	public String toString(){
-		String student = "";
-		student += "Name: " + name + "\nPreassigned project: " + preassigned + "\n";
-		student += "Number of stated preferences: " + numberStatedPreferences + "\n";
-		student += "Number of preferences : " + getNumberPreferences() + "\n";
-		student += "Preferences: " + preferences;
-		return student;
-	}
+//	public String toString(){
+//		String student = "";
+//		student += "Name: " + name + "\nPreassigned project: " + preassigned + "\n";
+//		student += "Number of stated preferences: " + numberStatedPreferences + "\n";
+//		student += "Number of preferences : " + getNumberPreferences() + "\n";
+//		student += "Preferences: " + preferences;
+//		return student;
+//	}
 }

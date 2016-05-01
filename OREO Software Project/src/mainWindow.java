@@ -13,7 +13,7 @@ public class mainWindow {
 	private JFrame frmOreoSoftwareProject;
 	private JTextArea textPane = new JTextArea();
 	private PreferenceTable p;
-	private CandidateSolution temp;
+	private CandidateSolution temp, bestSolution;
 	private final JFileChooser fileChooser = new JFileChooser();
 
 	/**
@@ -59,6 +59,7 @@ public class mainWindow {
 		try{
 			p = new PreferenceTable("./Project allocation data.tsv");
 			temp = new CandidateSolution(p);
+			bestSolution = new CandidateSolution(temp, p);
 		}catch(Exception e) {
 			chooseFile();
 		}
@@ -247,14 +248,14 @@ public class mainWindow {
 		button.setBounds(57, 364, 70, 25);
 		frmOreoSoftwareProject.getContentPane().add(button);
 
-		JButton fileSave = new JButton("Save File");
+		JButton fileSave = new JButton("Save Best File");
 		fileSave.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
 		fileSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				 saveFile();
 			}
 		});				
-		fileSave.setBounds(46, 398, 92, 25);
+		fileSave.setBounds(38, 398, 107, 25);
 		frmOreoSoftwareProject.getContentPane().add(fileSave);
 
 		JButton fileButton = new JButton("Choose File");
@@ -277,6 +278,7 @@ public class mainWindow {
 					p = new PreferenceTable(fileChooser.getSelectedFile().getAbsolutePath());
 					fileChooser.setCurrentDirectory(fileChooser.getSelectedFile());
 					temp = new CandidateSolution(p);
+					bestSolution = new CandidateSolution(temp, p);
 					print("File chosen: " + fileChooser.getSelectedFile().getAbsolutePath());
 				} catch (Exception e) {
 					fileChooser.cancelSelection();
@@ -308,6 +310,9 @@ public class mainWindow {
 			print(("New satisfaction... " + resultF + "%"));
 			float diff = (float)(endTime-startTime)/1000;
 			print("Completed in "+diff+" seconds\n-- -- -- --");
+			if (temp.getSatisfaction() <= bestSolution.getSatisfaction()){
+				bestSolution = new CandidateSolution(temp, p);
+			}
 		}catch(Exception e)	{ print("Invalid values!"); }
 	}
 
@@ -338,7 +343,10 @@ public class mainWindow {
 			float resultF = (float)result/100;
 			print("Overall satisfaction: " + resultF + "%");
 			print("Completed in "+diff+" seconds\n-- -- -- --");
-		}catch(Exception e) { print("Invalid values! "+e+"\n"); } // remove +e when finalised
+			if (best.getSatisfaction() <= bestSolution.getSatisfaction()){
+				bestSolution = new CandidateSolution(best, p);
+			}
+		}catch(Exception e) { print("Invalid values!\n"); } // remove +e when finalised
 	}
 
 	private void print(String s){
@@ -349,8 +357,11 @@ public class mainWindow {
 		int choice = fileChooser.showSaveDialog(frmOreoSoftwareProject);
 		if(choice == JFileChooser.APPROVE_OPTION) {
 			try{
+			int resultI = (int)(bestSolution.getSatisfaction()*10000);
+			float resultF = (float)resultI/100;
+			print(("Saving best solution with satisfaction of " + resultF + "%..."));
 			PrintWriter savedFile = new PrintWriter(fileChooser.getSelectedFile().getAbsolutePath()+".tsv");
-			savedFile.write(temp.toString());
+			savedFile.write(bestSolution.toString());
 			savedFile.close();
 			print("File saved successfully!");
 			}catch(Exception e){

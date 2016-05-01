@@ -16,6 +16,12 @@ public class CandidateAssignment {
 		lastAssignment = null;
 		assignment = student.getRandomPreference();
 	}
+	
+	public CandidateAssignment(CandidateAssignment a){
+		this.student = new StudentEntry(a.getStudent());
+		lastAssignment = a.getLastAssignment();
+		assignment = a.getAssignment();
+	}
 
 	public StudentEntry getStudent(){
 		return student;
