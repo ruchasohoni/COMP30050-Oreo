@@ -51,7 +51,7 @@ public class mainWindow {
 		frmOreoSoftwareProject.setBounds(100, 100, 599, 500);
 		frmOreoSoftwareProject.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmOreoSoftwareProject.getContentPane().setLayout(null);
-		frmOreoSoftwareProject.setIconImage(new ImageIcon("icon.png").getImage());
+		frmOreoSoftwareProject.setIconImage(new ImageIcon("./icon.png").getImage());
 
 		try{
 			p = new PreferenceTable("./Project allocation data.tsv");

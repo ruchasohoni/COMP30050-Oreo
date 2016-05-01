@@ -1,8 +1,8 @@
 //import java.util.ArrayList;
-//
-//public class Test {
-//
-//	public static void main(String[] args) {
+
+public class Test {
+
+	public static void main(String[] args) {
 //		PreferenceTable p = new PreferenceTable("Project allocation data.tsv");
 //		for(int i=0 ; i < 1 ; i++){
 //			CandidateSolution temp = new CandidateSolution(p);
@@ -15,8 +15,8 @@
 //			
 //			testGA(12000);
 //		}
-//	}
-//	
+	}
+	
 //	private static void testGA(int N){
 //		System.out.println("**************\nGA Solver Test\n");
 //		//create population
@@ -34,4 +34,4 @@
 //		float diff = (float)(endTime-startTime)/1000;
 //		System.out.printf("Time = %.4f seconds\n**************\n", diff);
 //	}
-//}
+}
