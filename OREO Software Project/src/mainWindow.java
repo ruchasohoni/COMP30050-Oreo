@@ -1,11 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.io.PrintWriter;
-
 import javax.swing.*;
-
 import java.util.ArrayList;
-
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class mainWindow {
@@ -70,6 +67,16 @@ public class mainWindow {
 		JScrollPane scrollPane = new JScrollPane(textPane);
 		scrollPane.setBounds(193, 12, 388, 447);
 		frmOreoSoftwareProject.getContentPane().add(scrollPane);
+
+		// INTRO MESSAGE
+		print("==--==--==--==--==--==--==--==--==--==--==");
+		print("   Welcome to the OREO project assignment solver!");
+		print("   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --");
+		print(" Default values of SA expect a runtime of  ~4 seconds");
+		print(" Default values of GA expect a runtime of ~45 seconds");
+		print("   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --");
+		print("   Use the options on the left to find a solution!");
+		print("==--==--==--==--==--==--==--==--==--==--==\n");
 
 		JTextField temperatureField = new JTextField();
 		temperatureField.setHorizontalAlignment(SwingConstants.CENTER);
@@ -149,7 +156,6 @@ public class mainWindow {
 		comboBox.addActionListener (new ActionListener () {
 			public void actionPerformed(ActionEvent e) {
 				if(comboBox.getSelectedItem() == "Simulated Annealing"){
-					print("Default values of SA expect a runtime of  ~4 seconds");
 					temperatureField.setText("300");
 					coolingField.setText("0.999");
 					populationField.setText("");
@@ -161,7 +167,6 @@ public class mainWindow {
 					generationField.setEditable(false);
 					percentageField.setEditable(false);
 				} else {
-					print("Default values of GA expect a runtime of ~45 seconds");
 					temperatureField.setText("");
 					coolingField.setText("");
 					populationField.setText("12000");
@@ -248,24 +253,24 @@ public class mainWindow {
 		button.setBounds(60, 364, 70, 25);
 		frmOreoSoftwareProject.getContentPane().add(button);
 
-		JButton fileSave = new JButton("Save Best File");
+		JButton fileSave = new JButton("Save Best Solution");
 		fileSave.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
 		fileSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				saveFile();
 			}
 		});				
-		fileSave.setBounds(40, 398, 110, 25);
+		fileSave.setBounds(25, 398, 140, 25);
 		frmOreoSoftwareProject.getContentPane().add(fileSave);
 
-		JButton fileButton = new JButton("Choose File");
+		JButton fileButton = new JButton("Open New File");
 		fileButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
 		fileButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				chooseFile();
 			}
 		});				
-		fileButton.setBounds(40, 432, 110, 25);
+		fileButton.setBounds(25, 432, 140, 25);
 		frmOreoSoftwareProject.getContentPane().add(fileButton);
 
 	}
@@ -369,7 +374,7 @@ public class mainWindow {
 				PrintWriter savedFile = new PrintWriter(fileName);
 				savedFile.write(bestSolution.toString());
 				savedFile.close();
-				print("File saved successfully!");
+				print("File saved successfully!\n" + fileName);
 			}catch(Exception e){
 				print("Cannot save file: " +e);
 			}
