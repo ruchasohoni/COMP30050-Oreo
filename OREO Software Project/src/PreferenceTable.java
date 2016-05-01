@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
@@ -18,10 +17,11 @@ public class PreferenceTable  {
 	}
 
 	/**I used a relative file path rather than absolute, as this way
-	 it doesn't matter where the program/file is as long as they are in the right directory*/
-	public PreferenceTable(String path) {
-		String file = new String(path); 
-		table = loadContentFromFile(file);	
+	 it doesn't matter where the program/file is as long as they are in the right directory
+	 * @throws Exception */
+	public PreferenceTable(String path) throws Exception {
+		String file = new String(path);
+		table = loadContentFromFile(file);
 		loadStudents();
 	}	
 
@@ -66,31 +66,28 @@ public class PreferenceTable  {
 	to where the tabs are, and then add this tab delimited line to a row vector.
 	Once a full line is parsed, this new vector is added to the full table.
 	The program will also attempt to catch any IO exceptions (such as file not found),
-	so the program can handle it without an error.*/
-	private Vector<Vector<String>> loadContentFromFile(String path) {
+	so the program can handle it without an error.
+	 * @throws Exception */
+	private Vector<Vector<String>> loadContentFromFile(String path) throws Exception {
 		StringTokenizer	tokens;
 		FileInputStream stream;
 		BufferedReader	input;
 		String line;
 		String cell;
 		Vector<Vector<String>> table = new Vector<Vector<String>>();
-		try  {
-			stream = new FileInputStream(path);
-			input = new BufferedReader(new InputStreamReader(stream));
-			while ((line = input.readLine()) != null) {
-				Vector<String> row = new Vector<String>();
-				tokens	=	new StringTokenizer(line,"\t");
-				while (tokens.hasMoreTokens()) {
-					cell = tokens.nextToken();
-					row.add(cell);
-				}
-				table.add(row);
+		stream = new FileInputStream(path);
+		input = new BufferedReader(new InputStreamReader(stream));
+		while ((line = input.readLine()) != null) {
+			Vector<String> row = new Vector<String>();
+			tokens	=	new StringTokenizer(line,"\t");
+			while (tokens.hasMoreTokens()) {
+				cell = tokens.nextToken();
+				row.add(cell);
 			}
-			input.close();
-			stream.close();
-		} catch (IOException e) {
-			System.out.println("Exception thrown  :" + e);
+			table.add(row);
 		}
+		input.close();
+		stream.close();
 		return table;
 	}
 

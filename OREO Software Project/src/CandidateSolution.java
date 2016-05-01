@@ -139,4 +139,13 @@ public class CandidateSolution {
 		}
 		return true;
 	}
+	
+	public String toString(){
+		String s = ("STUDENT NAME\tASSIGNMENT\n");
+		for(CandidateAssignment current : assignments){
+			s += current.getStudentName() + "\t";
+			s += current.getAssignment() + "\n";
+		}
+		return s;
+	}
 }
