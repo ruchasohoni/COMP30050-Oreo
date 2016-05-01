@@ -82,7 +82,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		temperatureField.setBounds(32, 93, 120, 20);
+		temperatureField.setBounds(35, 93, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(temperatureField);
 
 		JTextField coolingField = new JTextField();
@@ -96,7 +96,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		coolingField.setBounds(32, 145, 120, 20);
+		coolingField.setBounds(35, 145, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(coolingField);
 
 		JTextField populationField = new JTextField();
@@ -110,7 +110,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		populationField.setBounds(32, 197, 120, 20);
+		populationField.setBounds(35, 197, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(populationField);
 
 		JTextField generationField = new JTextField();
@@ -124,7 +124,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		generationField.setBounds(32, 249, 120, 20);
+		generationField.setBounds(35, 249, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(generationField);
 
 		JTextField percentageField = new JTextField();
@@ -138,7 +138,7 @@ public class mainWindow {
 			@Override
 			public void focusLost(FocusEvent e) { }
 		});
-		percentageField.setBounds(32, 301, 120, 20);
+		percentageField.setBounds(35, 301, 120, 20);
 		frmOreoSoftwareProject.getContentPane().add(percentageField);
 
 		JComboBox<String> comboBox = new JComboBox<String>();
@@ -175,44 +175,44 @@ public class mainWindow {
 				}
 			}
 		});
-		comboBox.setBounds(17, 36, 150, 25);
+		comboBox.setBounds(20, 36, 150, 25);
 		comboBox.setSelectedItem("Simulated Annealing");
 		frmOreoSoftwareProject.getContentPane().add(comboBox);
 
 		JLabel lblSelectTheType = new JLabel("Select the algorithm to use");
 		lblSelectTheType.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectTheType.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
-		lblSelectTheType.setBounds(9, 9, 166, 18);
+		lblSelectTheType.setBounds(12, 9, 166, 18);
 		frmOreoSoftwareProject.getContentPane().add(lblSelectTheType);
 
 		JLabel lblTemperaturega = new JLabel("Temperature");
 		lblTemperaturega.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTemperaturega.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblTemperaturega.setBounds(9, 70, 166, 14);
+		lblTemperaturega.setBounds(12, 70, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblTemperaturega);
 
 		JLabel lblDecrimentFactor = new JLabel("Cooling factor");
 		lblDecrimentFactor.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDecrimentFactor.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblDecrimentFactor.setBounds(9, 122, 166, 14);
+		lblDecrimentFactor.setBounds(12, 122, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblDecrimentFactor);
 
 		JLabel lblPopulationSizega = new JLabel("Population Size");
 		lblPopulationSizega.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPopulationSizega.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblPopulationSizega.setBounds(9, 174, 166, 14);
+		lblPopulationSizega.setBounds(12, 174, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblPopulationSizega);
 
 		JLabel lblGenerationsga = new JLabel("Number of Generations");
 		lblGenerationsga.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGenerationsga.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblGenerationsga.setBounds(9, 226, 166, 14);
+		lblGenerationsga.setBounds(12, 226, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblGenerationsga);
 
 		JLabel lblTopPercentga = new JLabel("Top Percent");
 		lblTopPercentga.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTopPercentga.setFont(new Font("Comic Sans MS", Font.PLAIN, 10));
-		lblTopPercentga.setBounds(9, 278, 166, 14);
+		lblTopPercentga.setBounds(12, 278, 166, 14);
 		frmOreoSoftwareProject.getContentPane().add(lblTopPercentga);
 
 		// ------ THIS IS WHAT HAPPENS WHEN "GO" IS PRESSED ------ //
@@ -230,7 +230,7 @@ public class mainWindow {
 				}
 			}
 		});
-		btnGo.setBounds(57, 330, 70, 25);
+		btnGo.setBounds(60, 330, 70, 25);
 		frmOreoSoftwareProject.getContentPane().add(btnGo);
 
 		JButton button = new JButton("CLEAR");
@@ -245,17 +245,17 @@ public class mainWindow {
 				percentageField.setText("");
 			}
 		});
-		button.setBounds(57, 364, 70, 25);
+		button.setBounds(60, 364, 70, 25);
 		frmOreoSoftwareProject.getContentPane().add(button);
 
 		JButton fileSave = new JButton("Save Best File");
 		fileSave.setFont(new Font("Comic Sans MS", Font.PLAIN, 11));
 		fileSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				 saveFile();
+				saveFile();
 			}
 		});				
-		fileSave.setBounds(38, 398, 107, 25);
+		fileSave.setBounds(40, 398, 110, 25);
 		frmOreoSoftwareProject.getContentPane().add(fileSave);
 
 		JButton fileButton = new JButton("Choose File");
@@ -265,7 +265,7 @@ public class mainWindow {
 				chooseFile();
 			}
 		});				
-		fileButton.setBounds(46, 432, 92, 25);
+		fileButton.setBounds(40, 432, 110, 25);
 		frmOreoSoftwareProject.getContentPane().add(fileButton);
 
 	}
@@ -352,18 +352,24 @@ public class mainWindow {
 	private void print(String s){
 		textPane.append(s+"\n");
 	}
-	
+
 	private void saveFile(){
 		int choice = fileChooser.showSaveDialog(frmOreoSoftwareProject);
 		if(choice == JFileChooser.APPROVE_OPTION) {
 			try{
-			int resultI = (int)(bestSolution.getSatisfaction()*10000);
-			float resultF = (float)resultI/100;
-			print(("Saving best solution with satisfaction of " + resultF + "%..."));
-			PrintWriter savedFile = new PrintWriter(fileChooser.getSelectedFile().getAbsolutePath()+".tsv");
-			savedFile.write(bestSolution.toString());
-			savedFile.close();
-			print("File saved successfully!");
+				int resultI = (int)(bestSolution.getSatisfaction()*10000);
+				float resultF = (float)resultI/100;
+				print(("Saving best solution with satisfaction of " + resultF + "%..."));
+				String fileName = fileChooser.getSelectedFile().getAbsolutePath();
+				if(!fileName.endsWith(".tsv"))
+					fileName += "_" + System.currentTimeMillis() + ".tsv";
+				else
+					fileName = fileName.substring(0, fileName.length()-4)
+					+ "_" + System.currentTimeMillis() + ".tsv";
+				PrintWriter savedFile = new PrintWriter(fileName);
+				savedFile.write(bestSolution.toString());
+				savedFile.close();
+				print("File saved successfully!");
 			}catch(Exception e){
 				print("Cannot save file: " +e);
 			}
