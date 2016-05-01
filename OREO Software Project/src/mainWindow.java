@@ -315,7 +315,7 @@ public class mainWindow {
 			print(("New satisfaction... " + resultF + "%"));
 			float diff = (float)(endTime-startTime)/1000;
 			print("Completed in "+diff+" seconds\n-- -- -- --");
-			if (temp.getSatisfaction() <= bestSolution.getSatisfaction()){
+			if (temp.getSatisfaction() >= bestSolution.getSatisfaction()){
 				bestSolution = new CandidateSolution(temp, p);
 			}
 		}catch(Exception e)	{ print("Invalid values!"); }
@@ -348,10 +348,10 @@ public class mainWindow {
 			float resultF = (float)result/100;
 			print("Overall satisfaction: " + resultF + "%");
 			print("Completed in "+diff+" seconds\n-- -- -- --");
-			if (best.getSatisfaction() <= bestSolution.getSatisfaction()){
+			if (best.getSatisfaction() >= bestSolution.getSatisfaction()){
 				bestSolution = new CandidateSolution(best, p);
 			}
-		}catch(Exception e) { print("Invalid values!\n"); } // remove +e when finalised
+		}catch(Exception e) { print("Invalid values!\n"); } 
 	}
 
 	private void print(String s){
